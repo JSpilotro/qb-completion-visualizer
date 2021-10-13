@@ -7,7 +7,7 @@ import numpy as np
 df = pd.read_csv('https://raw.githubusercontent.com/ArrowheadAnalytics/next-gen-scrapy-2.0/master/pass_and_game_data.csv', index_col=0)
 df.head()
 
-def plot_passes(player_name='Patrick Mahomes', year=2019):
+def plot_passes(player_name='Patrick Mahomes', year=2020):
 
   plt.style.use('fivethirtyeight')
 
@@ -22,13 +22,13 @@ def plot_passes(player_name='Patrick Mahomes', year=2019):
   fig, ax = plt.subplots(figsize=(6, 10))
 
   # scatter plot completions as small green dots with some transparency
-  ax.scatter(complete['x_coord'], complete['y_coord'], color='green', alpha=0.6, edgecolors='white')
+  ax.scatter(complete['x'], complete['y'], color='green', alpha=0.6, edgecolors='white')
   # scatter plot incompletions as small red dots with some transparency
-  ax.scatter(incomplete['x_coord'], incomplete['y_coord'], color='red', alpha=0.6, edgecolors='white')
+  ax.scatter(incomplete['x'], incomplete['y'], color='red', alpha=0.6, edgecolors='white')
   # scatter plot touchdowns as big green dots with less transparency and larger white outline
-  ax.scatter(touchdown['x_coord'], touchdown['y_coord'], color='green', alpha=0.8, edgecolors='white', linewidth=2, s=125)
+  ax.scatter(touchdown['x'], touchdown['y'], color='green', alpha=0.8, edgecolors='white', linewidth=2, s=125)
   # scatter plot touchdowns as big red dots with less transparency and larger white outline
-  ax.scatter(interception['x_coord'], interception['y_coord'], color='red', alpha=0.8, edgecolors='white', linewidth=2, s=125)
+  ax.scatter(interception['x'], interception['y'], color='red', alpha=0.8, edgecolors='white', linewidth=2, s=125)
 
 
   ax.set_yticks(np.arange(-20, 60, 10));
@@ -53,4 +53,11 @@ def plot_passes(player_name='Patrick Mahomes', year=2019):
   ax.legend(['Complete Pass', 'Incomplete Pass', 'Touchdown', 'Interception', 'Line of Scrimmage'],
             ncol=1, loc='upper left', bbox_to_anchor=(1.05, 1), facecolor='#233746', prop={'size': 16})
 
-plot_passes()
+
+plot_passes(player_name='Tom Brady')
+plot_passes(player_name='Patrick Mahomes')
+plot_passes(player_name='Lamar Jackson')
+plot_passes(player_name='Dak Prescott')
+plot_passes(player_name='Matthew Stafford')
+plot_passes(player_name='Kyler Murray')
+plot_passes(player_name='Justin Herbert')
